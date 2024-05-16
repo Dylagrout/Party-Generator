@@ -68,16 +68,16 @@ const raceBaseNames = {
     },
     'Dwarf': {
         male: {
-            firstNames: ['flint', 'thorin', 'tom', 'doc', 'tyrion', 'balin', 'dwalin', 'fili', 'kili', 'gloin' , 'nori', 'dori', 'ori', 'oin', 'bifur', 'bofur','bombur','bruenor', 'puck', 'fret', 'dopey', 'gwildor', 'warwick', 'thibbledorf', 'wicket', 'brannigan', 'gilius', 'magni', 'zakk', 'gimli', 'tippet', 'emp', 'thargas', 'alberich', 'khal', 'harsk', '' ],
-            lastNames: ['pwent', 'rockbreaker', 'ironforge', 'thundermaul', 'lightninghead', 'coalheart', 'bronzebeard', 'anvilmar', 'khalundurrin' ]
+            firstNames: ['flint', 'thorin', 'tom', 'doc', 'tyrion', 'balin', 'dwalin', 'fili', 'kili', 'gloin' , 'nori', 'dori', 'ori', 'oin', 'bifur', 'bofur','bombur','bruenor', 'puck', 'fret', 'dopey', 'gwildor', 'warwick', 'thibbledorf', 'wicket', 'brannigan', 'gilius', 'magni', 'zakk', 'gimli', 'tippet', 'emp', 'thargas', 'alberich', 'khal', 'harsk', 'bantam' ],
+            lastNames: ['pwent', 'rockbreaker', 'ironforge', 'thundermaul', 'lightninghead', 'coalheart', 'bronzebeard', 'anvilmar', 'khalundurrin', 'bonecloak', 'bludgeon', 'danthelon', 'derryck', 'luthrinn']
         },
         female: {
-            firstNames: ['willow', 'golinda'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['willow', 'golinda', 'derryth', 'eldra', 'enya', 'kree', 'nettie', 'torgga', 'efrin', 'belinda', 'edowyn', 'grimelda', ''],
+            lastNames: ['pwent', 'rockbreaker', 'ironforge', 'thundermaul', 'lightninghead', 'coalheart', 'bronzebeard', 'anvilmar', 'khalundurrin', 'bonecloak', 'bludgeon', 'danthelon', 'derryck', 'luthrinn']
         },
         neutral: {
             firstNames: ['finrod', 'aredhel', 'maeglin', 'ecthelion', 'glorfindel'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            lastNames: ['pwent', 'rockbreaker', 'ironforge', 'thundermaul', 'lightninghead', 'coalheart', 'bronzebeard', 'anvilmar', 'khalundurrin', 'bonecloak', 'bludgeon', 'danthelon', 'derryck', 'luthrinn']
         }
     },
     'Eladrin': {
