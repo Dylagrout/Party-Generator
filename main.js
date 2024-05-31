@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const generateButton = document.getElementById('generate-button');
     if (generateButton) {
         generateButton.addEventListener('click', generateParty);
+        generateButton.addEventListener('touchstart', generateParty);
     } else {
         console.error('Generate button not found.');
     }
