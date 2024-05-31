@@ -637,8 +637,10 @@ const backgrounds = {
 const races = {
     'Aarakocra': {
         rarity: 'exotic',
-        minSyllables: 1,
-        maxSyllables: 3,
+        firstNameMinSyllables: 1,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 0,
+        lastNameMaxSyllables: 0,
         bonus: [
             { choose: 2, amount: 2, chooseOther: { choose: 1, amount: 1 } }, // Choose any +2; choose any other +1
             { any: [1, 1, 1] }  // Choose three different +1
@@ -646,8 +648,10 @@ const races = {
     },
     'Aasimar':{
         rarity: 'rare',
-        minSyllables: 2,
-        maxSyllables: 4,
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 4,
         subraces:{
         'Fallen': { 'Charisma': 2, 'Strength': 1},
         'Protector': { 'Charisma': 2, 'Wisdom': 1},
@@ -655,14 +659,18 @@ const races = {
         }
     },
     'Bugbear':{
-        minSyllables: 1,
-        maxSyllables: 2,
+        firstNameMinSyllables: 1,
+        firstNameMaxSyllables: 2,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 3,
         rarity: 'exotic',
         bonus: {'Strength':2, 'Dexterity': 1},
     },
     'Centaur':{
-        minSyllables: 2,
-        maxSyllables: 3,
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 4,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 3,
         rarity: 'exotic',
         bonus: [
             { choose: 2, amount: 2, chooseOther: { choose: 1, amount: 1 } }, // Choose any +2; choose any other +1
@@ -670,8 +678,10 @@ const races = {
         ]
     },
     'Changeling':{
-        minSyllables: 1,
-        maxSyllables: 5,
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 1,
+        lastNameMaxSyllables: 3,
         rarity: 'rare',
         bonus: [
             { choose: 2, amount: 2, chooseOther: { choose: 1, amount: 1 } }, // Choose any +2; choose any other +1
@@ -680,8 +690,10 @@ const races = {
     },
     'Dragonborn': {
         rarity: 'uncommon',
-        minSyllables: 2,
-        maxSyllables: 3,
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 4,
         subraces: {
             'Red': { 'Strength': 2, 'Charisma': 1 },
             'Blue': { 'Strength': 2, 'Charisma': 1 },
@@ -698,6 +710,10 @@ const races = {
     
     'Dwarf': {
         rarity: 'common',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 4,
         subraces:{
             'Hill': {'Constitution': 2, 'Wisdom': 1},
             'Mountain': {'Strength': 2, 'Constitution': 2},
@@ -711,6 +727,10 @@ const races = {
     },
     'Eladrin':{
         rarity: 'exotic',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 3,
         bonus: [
             { choose: 2, amount: 2, chooseOther: { choose: 1, amount: 1 } }, // Choose any +2; choose any other +1
             { any: [1, 1, 1] }  // Choose three different +1
@@ -718,6 +738,10 @@ const races = {
     },
     'Elf': {
         rarity: 'common',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 4,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 4,
         subraces: {
             'Drow': {'Dexterity': 2, 'Charisma': 1},
             'High Elf': { 'Intelligence': 1, 'Dexterity': 2 },
@@ -728,10 +752,18 @@ const races = {
     },
     'Shadar-Kai':{
         rarity: 'rare',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 3,
         bonus:{ 'Constitution': 1, 'Dexterity': 2 },
     },      
     'Fairy':{
         rarity: 'exotic',
+        firstNameMinSyllables: 1,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 3,
         bonus: [
             { choose: 2, amount: 2, chooseOther: { choose: 1, amount: 1 } }, // Choose any +2; choose any other +1
             { any: [1, 1, 1] }  // Choose three different +1
@@ -739,10 +771,16 @@ const races = {
     },
     'Firbolg':{
         rarity: 'rare',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 3,
         bonus: {'Wisdom': 2, 'Strength': 1}
     },
     'Genasi':{
         rarity: 'rare',
+        firstNameMinSyllables: 1,
+        firstNameMaxSyllables: 2,
         subraces: {
             'Air Genasi':{
                 bonus: [
@@ -772,6 +810,8 @@ const races = {
     },
     'Githyanki':{
         rarity: 'rare',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
         bonus: [
             { choose: 2, amount: 2, chooseOther: { choose: 1, amount: 1 } }, // Choose any +2; choose any other +1
             { any: [1, 1, 1] }  // Choose three different +1
@@ -779,6 +819,8 @@ const races = {
     },
     'Githzerai':{
         rarity: 'rare',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
         bonus: [
             { choose: 2, amount: 2, chooseOther: { choose: 1, amount: 1 } }, // Choose any +2; choose any other +1
             { any: [1, 1, 1] }  // Choose three different +1

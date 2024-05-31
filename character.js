@@ -96,24 +96,6 @@ function generateRace(race) {
     }
     return { subraceName, bonuses };
 }
-function generateNameAndDescription(race) {
-    // Generate names and descriptions based on race
-    const names = {
-        'Elf': 'Elrond Leafwalker',
-        'Human': 'John Smith',
-        'Dwarf': 'Thorin Oakenshield',
-        'Halfling': 'Frodo Baggins',
-        'Orc': 'Gorbag Skullcrusher'
-    };
-    const descriptions = {
-        'Elf': 'A tall and slender elf with keen eyes.',
-        'Human': 'A versatile and ambitious human.',
-        'Dwarf': 'A stout and strong dwarf with a long beard.',
-        'Halfling': 'A small and nimble halfling with a cheerful smile.',
-        'Orc': 'A fierce and muscular orc with green skin.'
-    };
-    return { name: names[race], description: descriptions[race] };
-}
 
 function generateBackground() {
     const keys = Object.keys(backgrounds);
@@ -214,12 +196,12 @@ function generateCharacter(level) {
     // Step 8: Generate other character details
     const nameSource = raceBaseNames[raceName][gender] || raceBaseNames[raceName].neutral;
     const firstNameSyllables = extractSyllables(nameSource.firstNames);
-    const firstName = generateName(firstNameSyllables);
+    const firstName = generateName(firstNameSyllables, race.firstNameMinSyllables, race.firstNameMaxSyllables);
 
     let lastName = '';
     if (nameSource.lastNames) {
         const lastNameSyllables = extractSyllables(nameSource.lastNames);
-        lastName = generateName(lastNameSyllables);
+        lastName = generateName(lastNameSyllables, race.lastNameMinSyllables, race.lastNameMaxSyllables);
     } else if (nameSource.compoundParts) {
         lastName = generateCompoundName(nameSource.compoundParts);
     }
