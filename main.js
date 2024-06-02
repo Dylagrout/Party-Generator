@@ -1,12 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
+function addEventListeners() {
     const generateButton = document.getElementById('generate-button');
     if (generateButton) {
-        generateButton.addEventListener('click', generateParty);
-        generateButton.addEventListener('touchstart', generateParty);
-    } else {
-        console.error('Generate button not found.');
+        generateButton.addEventListener('click', generateParty);  // For non-touch devices
+        generateButton.addEventListener('touchstart', generateParty);  // For touch devices
     }
-});
+}
 function generateParty() {
     const partySizeInput = document.getElementById('party-size');
     const levelInput = document.getElementById('party-level');

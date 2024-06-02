@@ -159,20 +159,17 @@ const raceBaseNames = {
     'Githzerai': {
         male: {
             firstNames: ['unrzth', 'saram', 'rinmiak', 'urdh', 'brallak', 'hralla', 'nirkk', 'rarra', 'zarkk', 'grandahn', 'ferg', 'urazad', 'shagh', 'dadran', 'karlla', 'dorgh', 'hutar', 'brarzth',' dragahr', 'armag', 'onlian', 'granth', 'fezth', 'drokk'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
         },
         female: {
             firstNames: ['niarin', 'umnia', 'elzin', 'ashelya', 'erzhanith', 'kanina', 'meirnera', 'shundmira', 'lirel', 'nasheah', 'umines', 'miriren', 'urayah', 'magdayah', 'elal', 'rezena', 'grinelya', 'hanla', 'rezmira', 'uralla', 'nashal', 'marmeka'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
         },
         neutral: {
             firstNames: ['uwiren', 'immal', 'umane',' kharmanith', 'xalid', 'kalahr', 'rarzth', 'dud', 'granmir', 'orod', 'barkk', 'gramir', 'dagor', 'grukh', 'xamag', 'lezina', 'ezhelzal', 'silila', 'khazayis', 'janihn', 'immililias', 'marlian', 'gankar'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
         }
     },
     'Gnome': {
         male: {
-            firstNames: ['elrond', 'legolas', 'thranduil', 'celeborn', 'haldir'],
+            firstNames: ['quawin', 'xalwin', 'valyur', 'zilfiz', 'orugrim', 'horbis', 'worryb', 'ronros', 'lotor', 'farhik', ''],
             lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
         },
         female: {
