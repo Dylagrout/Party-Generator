@@ -1,11 +1,17 @@
 function addEventListeners() {
     const generateButton = document.getElementById('generate-button');
     if (generateButton) {
-        generateButton.addEventListener('click', generateParty);  // For non-touch devices
-        generateButton.addEventListener('touchstart', generateParty);  // For touch devices
+        generateButton.addEventListener('click', (event) => {
+            event.preventDefault();  // Prevent default behavior
+            generateParty();
+        });
     }
 }
+
+document.addEventListener('DOMContentLoaded', addEventListeners);
+
 function generateParty() {
+    console.log("Generate Party called");
     const partySizeInput = document.getElementById('party-size');
     const levelInput = document.getElementById('party-level');
     const partyMembersDiv = document.getElementById('party-members');
