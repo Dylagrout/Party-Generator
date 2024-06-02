@@ -1,13 +1,11 @@
 function addEventListeners() {
     const generateButton = document.getElementById('generate-button');
     if (generateButton) {
-        generateButton.addEventListener('click', (event) => {
-            event.preventDefault();  // Prevent default behavior
-            generateParty();
-        });
+        generateButton.addEventListener('click', generateParty);  // For all devices
+    } else {
+        console.error('Generate button not found.');
     }
 }
-
 document.addEventListener('DOMContentLoaded', addEventListeners);
 
 function generateParty() {
@@ -25,9 +23,12 @@ function generateParty() {
     const level = parseInt(levelInput.value, 10);
     partyMembersDiv.innerHTML = '';
 
+    console.log(`Generating party of size: ${partySize}, level: ${level}`);  // Debugging log
+
     for (let i = 0; i < partySize; i++) {
         let character = generateCharacter(level);
         if (character) {
+            console.log(`Character ${i + 1}:`, character);  // Debugging log
             const memberDiv = document.createElement('div');
             memberDiv.className = 'character-box';
             memberDiv.innerHTML = renderCharacter(character);
