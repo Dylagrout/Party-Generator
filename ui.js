@@ -56,17 +56,25 @@ function showCharacterDetails(character) {
     detailsDiv.innerHTML = `
         <h2>${character.name} - ${character.race} ${character.subrace ? '(' + character.subrace + ') ' : ''}</h2>
         <p>${character.description}</p>
+        <ul>
+        <li>Personality:</li>
+        <li>Ideals:</li>
+        <li>Bonds:</li>
+        <li>Flaws:</li>
+        <li>Sexuality: ${character.sexuality}</li>    
+        </ul>
+        <ul>
+        <li>Hit Points: ${character.hitPoints}</li>
+        <li>Feats: ${feats.join(', ')}</li>
+        <li>Equipment: Armor: ${character.equipment.armor.join(', ')}; Weapons: ${character.equipment.weapons.join(', ')}</li>
+        <li>Languages: ${languages.join(', ')}</li>
+        <li>Tools: ${tools.join(', ')}</li>
+        <li>Skills: ${character.skills.join(', ')}</li>   
+        </ul>
         <h3>${character.subclass ? character.subclass + ' ' : ''}${character.class} ${character.primaryLevel}</h3>
         <ul>
-            <li>Hit Points: ${character.hitPoints}</li>
-            <li>Feats: ${feats.join(', ')}</li>
-            <li>Spells: ${spellDescriptions.join('; ')}</li>
-            <li>Languages: ${languages.join(', ')}</li>
-            <li>Tools: ${tools.join(', ')}</li>
-            <li>Skills: ${character.skills.join(', ')}</li>
-            <li>Equipment: Armor: ${character.equipment.armor.join(', ')}; Weapons: ${character.equipment.weapons.join(', ')}</li>
-            <li>Sexuality: ${character.sexuality}</li>        
-            </ul>
+            <li>Spells: ${spellDescriptions.join('; ')}</li> 
+        </ul>
         ${secondaryClassDetailsHtml}`;
     
     modal.style.display = 'block';

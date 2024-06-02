@@ -550,7 +550,7 @@ const subclasses = {
     'Warlock': ['Archfey', 'Celestial', 'Fathomless', 'Fiend', 'Genie', 'Great Old One', 'Hexblade', 'Undead', 'Undying'],
     'Wizard': ['Abjuration', 'Bladesinging', 'Blood Magic', 'Chronurgy', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Graviturgy', 'Illusion', 'Necromancy', 'Scribes', 'Transmutation', 'War Magic'],
 };
-const languagesList = ['Common', 'Auran', 'Abyssal', 'Celestial', 'Deep Speech', 'Draconic', 'Druidic', 'Dwarvish', 'Elvish', 'Giant', 'Gith', 'Gnoll', 'Gnomish', 'Goblin', 'Halfling', 'Infernal', 'Orc', 'Primordial', 'Slyvan', 'Thieves Cant', 'Undercommon'];
+const languagesList = ['Common', 'Auran', 'Abyssal', 'Celestial', 'Deep Speech', 'Draconic', 'Dwarvish', 'Elvish', 'Giant', 'Gith', 'Gnoll', 'Gnomish', 'Goblin', 'Halfling', 'Infernal', 'Orc', 'Primordial', 'Slyvan', 'Thieves Cant', 'Undercommon'];
 const equipmentCategories = {
     Armor: {
         None: [''],

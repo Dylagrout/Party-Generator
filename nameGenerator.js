@@ -169,49 +169,46 @@ const raceBaseNames = {
     },
     'Gnome': {
         male: {
-            firstNames: ['quawin', 'xalwin', 'valyur', 'zilfiz', 'orugrim', 'horbis', 'worryb', 'ronros', 'lotor', 'farhik', ''],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['quawin', 'xalwin', 'valyur', 'zilfiz', 'orugrim', 'horbis', 'worryb', 'ronros', 'lotor', 'farhik', 'wulbren', 'barcus', 'rinkkart', 'snimwyc', 'knilk', 'ryllbug', 'smeprap', 'riensbebeck', 'klellbaceg', 'gademmut'],
+            lastNames: ['bernfit', 'blaesocket', 'dark', 'hammer', 'earth', 'shaker', 'deep', 'delver',' blight', 'shale', 'dirkera', 'dust', 'seeker', 'faekkan', 'gem', 'cutter', 'hymnir', 'grosko', 'iron', 'pick', 'nutt', 'lattle', 'muwlebra']
         },
         female: {
-            firstNames: ['galadriel', 'arwen', 'luthien', 'tauriel', 'idril'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['wegni', 'philomeen', 'glimmeren', 'heddwa', 'laridda', 'themma', 'clinsmi', 'gnebilit', 'phufalamal', 'nahednyl', 'ilidwal', 'higbi', 'snagna', 'folnmyt', 'paddwiel', 'loovoth', 'ebnole', 'mefilny', 'smubabneel'],
+            lastNames: ['bernfit', 'blaesocket', 'dark', 'hammer', 'earth', 'shaker', 'deep', 'delver',' blight', 'shale', 'dirkera', 'dust', 'seeker', 'faekkan', 'gem', 'cutter', 'hymnir', 'grosko', 'iron', 'pick', 'nutt', 'lattle', 'muwlebra']
         },
         neutral: {
-            firstNames: ['Finrod', 'aredhel', 'maeglin', 'ecthelion', 'glorfindel'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['robblo', 'shenbi', 'cemdat', 'fenbis', 'bilbyr', 'fynkesu', 'lellbasyl', 'yhabkan', 'smohenjap', 'glailobbrort', 'tomjirt', 'raddwaic', 'binzyr', 'smaankyg', 'timulvest', 'cirecep', 'ollbevart', 'knamelkert'],
+            lastNames: ['bernfit', 'blaesocket', 'dark', 'hammer', 'earth', 'shaker', 'deep', 'delver',' blight', 'shale', 'dirkera', 'dust', 'seeker', 'faekkan', 'gem', 'cutter', 'hymnir', 'grosko', 'iron', 'pick', 'nutt', 'lattle', 'muwlebra']
         }
     },
     'Goblin': {
         male: {
-            firstNames: ['wicket', 'teebo',],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['wicket', 'teebo', 'eex', 'ealk', 'brur', 'klor', 'fylk', 'eart', 'rerd', 'klointol', 'srenteecs', 'chuzdaags', 'gadhazz', 'huluisz', 'vruik', 'ajirk', 'jeglurk', 'cegdit', 'sadrak', 'stujo', 'grimlegs', 'frailarm', 'stinkeyes', 'no-nose'],
         },
         female: {
-            firstNames: ['galadriel', 'arwen', 'luthien', 'tauriel', 'idril'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['ragin', 'dulgit', 'dagvin', 'nalvat', 'ris', 'pig', 'strangebrain', 'bait', 'shrilleye', 'strange', 'knuckle', 'dat', 'zek', 'algras', 'dirtun', 'zolgi', 'snail', 'smug', 'tooth', 'gob', 'slugmug' ],
         },
         neutral: {
-            firstNames: ['Finrod', 'aredhel', 'maeglin', 'ecthelion', 'glorfindel'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['ugdob', 'tagga', 'vilk', 'digg', 'krudreb', 'ichorarm', 'ingrate', 'widearm', 'toad','face', 'grime', 'bones', 'maldrur', 'dadruduk', 'vagrazan', 'obat', 'melni', 'numbbone', 'sick', 'cheeks' ],
         }
     },
     'Goliath': {
         male: {
-            firstNames: ['elrond', 'legolas', 'thranduil', 'celeborn', 'haldir'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['varalath', 'taravith', 'keorad', 'mothag', 'loronoth', 'kazagan', 'narapath', 'ghanak','grop', 'grog', 'monath', 'meamul', 'lauthag', 'lagith', 'vauranak', 'gatham', 'movoi'],
+            lastNames: ['munakiala', 'egumatake', 'ogoluthea', 'agu-vakane', 'thulanathi', 'inulavone', 'inuligo', 'munakathai', 'kolakelo', 'kulanaga', 'nola-kiala', 'uthenu-kugoni', 'agu-vavi', 'nugalavone', 'kolae-gigane', 'malukileana', 'apuna-makume']
         },
         female: {
-            firstNames: ['galadriel', 'arwen', 'luthien', 'tauriel', 'idril'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['naurea', 'naupeo', 'orilane', 'kathu', 'vaavia', 'nalthia', 'paathia', 'nallai', 'thugu', 'vopeu', 'gethio', 'pageo', 'areghu', 'thumi', 'gauvia', 'arema', 'paulea'],
+            lastNames: ['munakiala', 'egumatake', 'ogoluthea', 'agu-vakane', 'thulanathi', 'inulavone', 'inuligo', 'munakathai', 'kolakelo', 'kulanaga', 'nola-kiala', 'uthenu-kugoni', 'agu-vavi', 'nugalavone', 'kolae-gigane', 'malukileana', 'apuna-makume']
         },
         neutral: {
-            firstNames: ['Finrod', 'aredhel', 'maeglin', 'ecthelion', 'glorfindel'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['granak', 'orennio', 'zaapu', 'inagu', 'kevu', 'zori', 'vopu', 'zonna', 'manrra', 'zovea', 'vauleo', 'pakhal', 'vegaghan', 'vogith', 'korathok', 'moriak', 'taragun', 'lamahg', 'korarhan', 'kazagith', 'onekia', 'vemia', 'gagia', 'kileo'],
+            lastNames: ['munakiala', 'egumatake', 'ogoluthea', 'agu-vakane', 'thulanathi', 'inulavone', 'inuligo', 'munakathai', 'kolakelo', 'kulanaga', 'nola-kiala', 'uthenu-kugoni', 'agu-vavi', 'nugalavone', 'kolae-gigane', 'malukileana', 'apuna-makume']
         }
     },
     'Half-Elf': {
         male: {
-            firstNames: ['elrond', 'legolas', 'thranduil', 'celeborn', 'haldir'],
+            firstNames: ['elduin', 'pelleas', 'sylvar', 'luthais', 'taleasin', 'neldor', 'navarre', 'vuduin', 'khilseith', 'lysanthir', 'gerald', 'thomoric', 'n'],
             lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
         },
         female: {
