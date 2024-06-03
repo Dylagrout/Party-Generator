@@ -208,30 +208,30 @@ const raceBaseNames = {
     },
     'Half-Elf': {
         male: {
-            firstNames: ['elduin', 'pelleas', 'sylvar', 'luthais', 'taleasin', 'neldor', 'navarre', 'vuduin', 'khilseith', 'lysanthir', 'gerald', 'thomoric', 'n'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['elduin', 'pelleas', 'sylvar', 'luthais', 'taleasin', 'neldor', 'navarre', 'vuduin', 'khilseith', 'lysanthir', 'gerald', 'thomoric', 'gilliam', 'alexander', 'peter', 'theobald', 'reynard', 'gilbert', 'raymond', 'gerard', 'henry', 'godfrey', 'chard', 'anthony', 'ivan'],
+            lastNames: ['krisran', 'phiralei', 'iliroris', 'kelrel', 'helegwyn', 'holaralei', 'yintoris', 'vazorwyn', 'gilris', 'loramenor', 'heiharice', 'roxidor', 'vencaryn', 'luquinal', 'kelkalyn', 'petlee', 'miracaryn', 'rosalor', 'magtumal', 'zumnelis', 'carsandoral', 'kelwarin', 'xyrmaer', 'dorna', 'greris']
         },
         female: {
-            firstNames: ['galadriel', 'arwen', 'luthien', 'tauriel', 'idril'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['jhilsara', 'imizael', 'faunalyn', 'leilatha', 'omylia', 'phelorna', 'shanaera', 'ynaselle', 'ialantha', 'ava', 'kaylessa', 'nephinae', 'micah', 'ciliren', 'jeardra', 'sarah', 'beatrice', 'helen', 'millicent', 'anne', 'geva', 'mary', 'heather', 'cecild', 'yvonne', 'agne' ],
+            lastNames: ['krisran', 'phiralei', 'iliroris', 'kelrel', 'helegwyn', 'holaralei', 'yintoris', 'vazorwyn', 'gilris', 'loramenor', 'heiharice', 'roxidor', 'vencaryn', 'luquinal', 'kelkalyn', 'petlee', 'miracaryn', 'rosalor', 'magtumal', 'zumnelis', 'carsandoral', 'kelwarin', 'xyrmaer', 'dorna', 'greris']
         },
         neutral: {
-            firstNames: ['Finrod', 'aredhel', 'maeglin', 'ecthelion', 'glorfindel'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['hugo', 'paulina', 'engel', 'griselda', 'melissa', 'elizabeth', 'ida', 'richie', 'anselm', 'tommi', 'theodoric', 'hubert', 'gunter', 'ralf', 'margery', 'joan', 'nerenym', 'riluaneth', 'filaurel', 'tarathiel', 'nesterin', 'arthion', 'ayen', 'kendel', 'anlyth', 'conhal'],
+            lastNames: ['krisran', 'phiralei', 'iliroris', 'kelrel', 'helegwyn', 'holaralei', 'yintoris', 'vazorwyn', 'gilris', 'loramenor', 'heiharice', 'roxidor', 'vencaryn', 'luquinal', 'kelkalyn', 'petlee', 'miracaryn', 'rosalor', 'magtumal', 'zumnelis', 'carsandoral', 'kelwarin', 'xyrmaer', 'dorna', 'greris']
         }
     },
     'Half-Orc': {
         male: {
-            firstNames: ['elrond', 'legolas', 'thranduil', 'celeborn', 'haldir'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['com', 'niakudus', 'berad', 'zozvri', 'tobo', 'thabodzi', 'krekhal', 'nendrilen', 'khaibrugas', 'drerokruuk', 'gotram', 'thriangraut', 'buzzat', 'sangri', 'cokraki', 'zavar', 'tarvaa', 'cudzod', 'doall', 'thrulaltrath', 'gnasdall', 'gusdill', 'mistroth', 'hruuk', 'manondor', 'brok', 'hravadaut'],
+            lastNames: ['zanned', 'biki', 'glorythorn', 'hammer', 'fall', 'roz', 'chiloz', 'starhell', 'goredane', 'hiltranskuud', 'lalrak', 'chirkontavi', 'groborgi', 'di', 'zai', 'covezus', 'sonzivur', 'shahad', 'nemmad', 'willow', 'keeper', 'mildspell', 'sirsk', 'kurgug', 'sunbough', 'licrik', 'zonulmeba', 'dokabi', 'sernescas']
         },
         female: {
-            firstNames: ['galadriel', 'arwen', 'luthien', 'tauriel', 'idril'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['zamlu', 'rhavra', 'whavra', 'routtoro', 'riltilel', 'geghoth', 'zurga', 'vomath', 'cutrumesh', 'thatrutath', 'brenli', 'poux', 'gihge', 'tasamu', 'tun', 'nogi', 'uvugol', 'viljko', 'gonci', 'avreguo', 'shuol', 'poci', 'kan', 'obray', 'barguzah', 'bruzru', 'ughoblo', 'ruhkavu', 'vih', 'kahrith'],
+            lastNames: ['zanned', 'biki', 'glorythorn', 'hammer', 'fall', 'roz', 'chiloz', 'starhell', 'goredane', 'hiltranskuud', 'lalrak', 'chirkontavi', 'groborgi', 'di', 'zai', 'covezus', 'sonzivur', 'shahad', 'nemmad', 'willow', 'keeper', 'mildspell', 'sirsk', 'kurgug', 'sunbough', 'licrik', 'zonulmeba', 'dokabi', 'sernescas']
         },
         neutral: {
-            firstNames: ['Finrod', 'aredhel', 'maeglin', 'Ecthelion', 'glorfindel'],
-            lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
+            firstNames: ['agguruk', 'hagarim', 'gnaamash', 'guladall', 'tharin', 'gnaorimm', 'belaz', 'baragar', 'huninars', 'moragh','urozar', 'temari', 'gorizi', 'mish', 'tamigu', 'raheti', 'vanuzar', 'sumugh', 'arumur', 'ugudash', 'hanuruk', 'okad', 'ronaabar', 'zoranur', 'agadash', 'kamidim', 'arnunur', 'crarak', 'giglar'],
+            lastNames: ['zanned', 'biki', 'glorythorn', 'hammer', 'fall', 'roz', 'chiloz', 'starhell', 'goredane', 'hiltranskuud', 'lalrak', 'chirkontavi', 'groborgi', 'di', 'zai', 'covezus', 'sonzivur', 'shahad', 'nemmad', 'willow', 'keeper', 'mildspell', 'sirsk', 'kurgug', 'sunbough', 'licrik', 'zonulmeba', 'dokabi', 'sernescas']
         }
     },
     'Halfling': {
