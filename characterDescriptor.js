@@ -1,6 +1,5 @@
-const descriptors = {
-    Elf: {
-        appearance: [
+const raceDescriptors = {
+    Elf: [
             'tall',
             'slender',
             'keen-eyed',
@@ -9,13 +8,26 @@ const descriptors = {
             'elegant',
             'mysterious',
         ],
+    Human: [
+            'versatile and ambitious',
+            'sturdy and resilient',
+            'plain but determined'
+        ],
+    };
+    const globalDescriptors ={
         personality: [
             'wise',
             'serene',
             'aloof',
-            ' kind-hearted',
+            'kind-hearted',
             'curious',
-            'adventurous'
+            'adventurous',
+            'brave',
+            'bold',
+            'resourceful',
+            'adaptable',
+            'friendly',
+            'sociable'
         ],
         flaw:[
             'easily distracted',
@@ -28,25 +40,10 @@ const descriptors = {
         otherTraits: [
             'loves nature and the forest',
             'has a deep connection with magic',
-            'skilled in archery and swordsmanship'
-        ]
-    },
-    Human: {
-        appearance: [
-            'versatile and ambitious',
-            'sturdy and resilient',
-            'plain but determined'
-        ],
-        personality: [
-            'brave and bold',
-            'resourceful and adaptable',
-            'friendly and sociable'
-        ],
-        otherTraits: [
+            'skilled in archery and swordsmanship',
             'dreams of great adventures',
             'strives for glory and honor',
             'has a strong sense of justice'
         ]
-    },
+    };
     // Add more races as needed
-};
