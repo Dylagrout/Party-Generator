@@ -828,6 +828,10 @@ const races = {
     },
     'Gnome':{
         rarity: 'uncommon',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 4,
         subraces: {
             'Svirfneblin':{
                 bonus: [
@@ -841,18 +845,32 @@ const races = {
     },
     'Goblin':{
         rarity: 'rare',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
         bonus: {'Dexterity': 2, 'Constitution': 1},
     },
     'Goliath':{
         rarity: 'rare',
+        firstNameMinSyllables: 1,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 3,
         bonus: {'Strength': 2, 'Constitution': 1},
     },
     'Half-Elf':{
         rarity: 'common',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 3,
         bonus:{'Charisma': 2, any: [1,1]},
     },
     'Half-Orc':{
         rarity: 'common',
+        firstNameMinSyllables: 2,
+        firstNameMaxSyllables: 3,
+        lastNameMinSyllables: 2,
+        lastNameMaxSyllables: 3,
         bonus: {'Strength': 2, 'Constitution': 1},
     },
     'Halfling':{
