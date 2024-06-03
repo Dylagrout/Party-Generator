@@ -1,14 +1,29 @@
 const descriptors = {
     Elf: {
         appearance: [
-            'tall and slender with keen eyes',
-            'graceful and agile, with pointed ears',
-            'elegant, with a mysterious aura'
+            'tall',
+            'slender',
+            'keen-eyed',
+            'graceful',
+            'agile',
+            'elegant',
+            'mysterious',
         ],
         personality: [
-            'wise and serene',
-            'aloof but kind-hearted',
-            'curious and adventurous'
+            'wise',
+            'serene',
+            'aloof',
+            ' kind-hearted',
+            'curious',
+            'adventurous'
+        ],
+        flaw:[
+            'easily distracted',
+            'easily influenced',
+            'overly trusting',
+            'overly ambitious',
+            'overly curious',
+            'overly self-centered'
         ],
         otherTraits: [
             'loves nature and the forest',

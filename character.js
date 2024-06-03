@@ -277,7 +277,7 @@ function generateDescription(raceName) {
     const personality = selectRandomItem(raceDescriptors.personality);
     const otherTrait = selectRandomItem(raceDescriptors.otherTraits);
 
-    return `A ${appearance}. They are ${personality} and ${otherTrait}.`;
+    return `${appearance}, ${appearance}, and ${appearance} . They are ${personality} and ${personality}, ${flaw}, and ${otherTrait}.`;
 }
 
 function selectRandomItem(items) {
