@@ -272,6 +272,7 @@ function generateCharacter(level) {
 function generateDescription(raceName) {
     const appearance = selectRandomItem(raceDescriptors[raceName] || ['of unknown appearance']);
     const personality = selectRandomItem(globalDescriptors.personality);
+    const flaw = selectRandomItem(globalDescriptors.flaw)
     const otherTrait = selectRandomItem(globalDescriptors.otherTraits);
 
     return `${appearance}, ${appearance}, and ${appearance} . They are ${personality} and ${personality}, ${flaw}, and ${otherTrait}.`;
