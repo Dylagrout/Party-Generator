@@ -270,12 +270,17 @@ function generateCharacter(level) {
 }
 
 function generateDescription(raceName) {
-    const appearance = selectRandomItem(raceDescriptors[raceName] || ['of unknown appearance']);
-    const personality = selectRandomItem(globalDescriptors.personality);
+    const appearances = selectMultipleRandomItems(raceDescriptors[raceName] || ['of unknown appearance'], 3);
+    const personalities = selectMultipleRandomItems(globalDescriptors.personality, 2);
     const flaw = selectRandomItem(globalDescriptors.flaw);
     const otherTrait = selectRandomItem(globalDescriptors.otherTraits);
 
-    return `${appearance}, ${appearance}, and ${appearance} . They are ${personality} and ${personality}, ${flaw}, and ${otherTrait}.`;
+    return `${appearances.join(', ')}, and ${appearances[2]}. They are ${personalities.join(', ')}, ${flaw}, and ${otherTrait}.`;
+}
+
+function selectMultipleRandomItems(items, count) {
+    const shuffled = items.slice().sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, count);
 }
 
 function selectRandomItem(items) {
