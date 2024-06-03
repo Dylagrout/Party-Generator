@@ -207,7 +207,7 @@ function generateCharacter(level) {
     }
 
     const fullName = lastName ? `${firstName} ${lastName}` : firstName;
-    const description = `An Elf`;
+    const description = generateDescription(raceName);
 
     const cantrips = spellLists[primaryClass] && spellLists[primaryClass].cantrips ? selectRandomSpells(spellLists[primaryClass].cantrips, classData.cantripsByLevel[primaryLevel - 1]) : [];
     const spells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[primaryLevel - 1], primaryClass === 'Warlock', primaryLevel) : {};
@@ -267,6 +267,21 @@ function generateCharacter(level) {
         languages, // Include generated languages
         tools: [] // Initialize tools as an empty array
     };
+}
+
+function generateDescription(raceName) {
+    const raceDescriptors = descriptors[raceName];
+    if (!raceDescriptors) return 'A character of unknown race.';
+
+    const appearance = selectRandomItem(raceDescriptors.appearance);
+    const personality = selectRandomItem(raceDescriptors.personality);
+    const otherTrait = selectRandomItem(raceDescriptors.otherTraits);
+
+    return `A ${appearance}. They are ${personality} and ${otherTrait}.`;
+}
+
+function selectRandomItem(items) {
+    return items[Math.floor(Math.random() * items.length)];
 }
 function getRacialLanguages(raceName) {
     const racialLanguages = {
