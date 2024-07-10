@@ -15,20 +15,29 @@ const raceDescriptors = {
         ],
     };
     const globalDescriptors ={
-        personality: [
-            'wise',
-            'serene',
-            'aloof',
-            'kind-hearted',
-            'curious',
-            'adventurous',
-            'brave',
-            'bold',
-            'resourceful',
-            'adaptable',
-            'friendly',
-            'sociable'
-        ],
+        personality: {
+            social: [
+                'friendly',
+                'sociable',
+                'aloof',
+                'reserved'
+            ],
+            temperamental: [
+                'wise',
+                'serene',
+                'brave',
+                'bold',
+                'adventurous',
+                'resourceful',
+                'adaptable'
+            ],
+            disposition: [
+                'kind-hearted',
+                'curious',
+                'aloof',
+                'self-centered'
+            ]
+        },
         flaw:[
             'easily distracted',
             'easily influenced',
