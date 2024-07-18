@@ -634,6 +634,12 @@ const backgrounds = {
         languagesCount: 0
     },
 };
+const feats = [
+    { name: 'Alert', description: 'Always on the lookout for danger. Gain +5 to initiative.' },
+    { name: 'Athlete', description: 'Increase Strength or Dexterity by 1, to a maximum of 20.' },
+    { name: 'Actor', description: 'Skilled at mimicry and dramatics. Gain advantage on deception and performance checks.' },
+    // Add more feats as needed
+];
 const races = {
     'Aarakocra': {
         rarity: 'exotic',

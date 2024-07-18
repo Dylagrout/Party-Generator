@@ -38,43 +38,49 @@ function showCharacterDetails(character) {
 
     let progressionHtml = '<h3>Level Progression</h3><ul>';
     character.progression.forEach(levelData => {
-        progressionHtml += `<li>Level ${levelData.level}: `;
-        progressionHtml += `Stats: ${JSON.stringify(levelData.stats)}, `;
-        progressionHtml += `Hit Points: ${levelData.hitPoints}, `;
+        progressionHtml += `<li><strong>Level ${levelData.level}</strong>:<ul>`;
+        for (const stat in levelData.stats) {
+            progressionHtml += `<li>${stat}: ${levelData.stats[stat]}</li>`;
+        }
+        progressionHtml += `<li>Hit Points: ${levelData.hitPoints}</li>`;
         if (levelData.subclass) {
-            progressionHtml += `Subclass: ${levelData.subclass}, `;
+            progressionHtml += `<li>Subclass: ${levelData.subclass}</li>`;
         }
         if (levelData.asiOrFeats.length > 0) {
-            progressionHtml += `ASI/Feats: ${levelData.asiOrFeats.join(', ')}, `;
+            progressionHtml += `<li>ASI/Feats: ${levelData.asiOrFeats.join(', ')}</li>`;
         }
-        progressionHtml += `Cantrips: ${levelData.cantrips.join(', ')}, `;
-        progressionHtml += `Spells: ${JSON.stringify(levelData.spells)}</li>`;
+        progressionHtml += `<li>Cantrips: ${levelData.cantrips.join(', ')}</li>`;
+        progressionHtml += `<li>Spells:<ul>`;
+        for (const spellLevel in levelData.spells) {
+            progressionHtml += `<li>Level ${spellLevel}: ${levelData.spells[spellLevel].join(', ')}</li>`;
+        }
+        progressionHtml += `</ul></li></ul></li>`;
     });
     progressionHtml += '</ul>';
 
     detailsDiv.innerHTML = `
-        <h2>${character.name} - ${character.race} ${character.subrace ? '(' + character.subrace + ') ' : ''}</h2>
-        <p>${character.description}</p>
-        <ul>
-        <li>Personality:</li>
-        <li>Ideals:</li>
-        <li>Bonds:</li>
-        <li>Flaws:</li>
-        <li>Sexuality: ${character.sexuality}</li>    
-        </ul>
-        <ul>
-        <li>Hit Points: ${character.hitPoints}</li>
-        <li>Feats: ${feats.join(', ')}</li>
-        <li>Equipment: Armor: ${character.equipment.armor.join(', ')}; Weapons: ${character.equipment.weapons.join(', ')}</li>
-        <li>Languages: ${languages.join(', ')}</li>
-        <li>Tools: ${tools.join(', ')}</li>
-        <li>Skills: ${character.skills.join(', ')}</li>   
-        </ul>
-        <h3>${character.subclass ? character.subclass + ' ' : ''}${character.class} ${character.level}</h3>
-        <ul>
-            <li>Spells: ${spellDescriptions.join('; ')}</li> 
-        </ul>
-        ${progressionHtml}`;
+    <h2>${character.name} - ${character.race} ${character.subrace ? '(' + character.subrace + ') ' : ''}</h2>
+    <p>${character.description}</p>
+    <ul>
+    <li>Personality:</li>
+    <li>Ideals:</li>
+    <li>Bonds:</li>
+    <li>Flaws:</li>
+    <li>Sexuality: ${character.sexuality}</li>    
+    </ul>
+    <ul>
+    <li>Hit Points: ${character.hitPoints}</li>
+    <li>Feats: ${feats.join(', ')}</li>
+    <li>Equipment: Armor: ${character.equipment.armor.join(', ')}; Weapons: ${character.equipment.weapons.join(', ')}</li>
+    <li>Languages: ${languages.join(', ')}</li>
+    <li>Tools: ${tools.join(', ')}</li>
+    <li>Skills: ${character.skills.join(', ')}</li>   
+    </ul>
+    <h3>${character.subclass ? character.subclass + ' ' : ''}${character.class} ${character.level}</h3>
+    <ul>
+        <li>Spells: ${spellDescriptions.join('; ')}</li> 
+    </ul>
+    ${progressionHtml}`;
 
     modal.style.display = 'block';
 }

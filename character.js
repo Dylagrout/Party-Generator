@@ -282,11 +282,16 @@ function generateLevelProgression(maxLevel, primaryClass, classData, stats) {
     let currentStats = { ...stats };
     let currentHitPoints = calculateHitPoints(classData.hitDie, currentLevel, currentStats.Constitution);
 
+    let currentCantrips = [];
+    let currentSpells = {};
+    let currentFeats = [];
+
     while (currentLevel <= maxLevel) {
         // Determine if there are any ASI/feats at this level
         let asiOrFeats = [];
         if (currentLevel % classData.featsEvery === 0) {
-            asiOrFeats = generateFeats(primaryClass, currentLevel);
+            asiOrFeats = selectRandomFeats(currentFeats);
+            currentFeats = currentFeats.concat(asiOrFeats);
         }
 
         // Determine the subclass at level 3
@@ -296,9 +301,17 @@ function generateLevelProgression(maxLevel, primaryClass, classData, stats) {
         }
 
         // Set the spells and cantrips
-        const cantrips = spellLists[primaryClass] && spellLists[primaryClass].cantrips ? selectRandomSpells(spellLists[primaryClass].cantrips, classData.cantripsByLevel[currentLevel - 1]) : [];
-        const spells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[currentLevel - 1], primaryClass === 'Warlock', currentLevel) : {};
+        const newCantrips = spellLists[primaryClass] && spellLists[primaryClass].cantrips ? selectUniqueItems(spellLists[primaryClass].cantrips, classData.cantripsByLevel[currentLevel - 1], currentCantrips) : [];
+        currentCantrips = currentCantrips.concat(newCantrips);
 
+        const newSpells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[currentLevel - 1], primaryClass === 'Warlock', currentLevel, currentSpells) : {};
+        for (const level in newSpells) {
+            if (currentSpells[level]) {
+                currentSpells[level] = currentSpells[level].concat(newSpells[level]);
+            } else {
+                currentSpells[level] = newSpells[level];
+            }
+        }
         // Store the progression for this level
         progression.push({
             level: currentLevel,
@@ -306,8 +319,8 @@ function generateLevelProgression(maxLevel, primaryClass, classData, stats) {
             hitPoints: currentHitPoints,
             subclass,
             asiOrFeats,
-            cantrips,
-            spells
+            cantrips: currentCantrips.slice(), // Copy the current cantrips
+            spells: JSON.parse(JSON.stringify(currentSpells))
         });
 
         // Increase level and hit points
@@ -528,7 +541,11 @@ function generateSpellsForLevel(spellList, slots, isWarlock = false, warlockLeve
 
     return spells;
 }
-
+function selectRandomFeats(currentFeats) {
+    const availableFeats = feats.filter(feat => !currentFeats.includes(feat.name));
+    const selectedFeats = selectRandomItems(availableFeats, 1).map(feat => feat.name);
+    return selectedFeats;
+}
 function selectUniqueItems(availableItems, count, exclusions = []) {
     let filteredItems = availableItems.filter(item => !exclusions.includes(item));
     return selectRandomItems(filteredItems, count);
@@ -562,5 +579,15 @@ function selectEquipment(classData) {
         weapons: selectRandomItems(weaponChoices, 2), // Select two weapons if typical
     };
 }
+function generateSpellsForLevel(spellList, spellSlots, isWarlock, level, currentSpells) {
+    const spells = {};
+    for (let i = 0; i < spellSlots.length; i++) {
+        const spellLevel = i + 1;
+        const availableSpells = spellList.spells[spellLevel].filter(spell => !(currentSpells[spellLevel] && currentSpells[spellLevel].includes(spell)));
+        spells[spellLevel] = selectUniqueItems(availableSpells, spellSlots[i]);
+    }
+    return spells;
+}
+
 
 
