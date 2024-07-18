@@ -1,6 +1,6 @@
 function generateCampaignNarrative(campaign, characters) {
     const resolvedCampaign = resolveEvents(campaign, characters);
-    const narrative = compileNarrative(resolvedCampaign);
+    const narrative = compileNarrative(resolvedCampaign, characters);
     return narrative;
 }
 
@@ -75,9 +75,29 @@ const outcomes = {
     failure: ['The heroes were defeated.', 'The party failed to solve the puzzle.', 'The characters made a social blunder.']
 };
 
-function compileNarrative(resolvedCampaign) {
-    return resolvedCampaign.map(stage => {
+function compileNarrative(resolvedCampaign, characters) {
+    let narrative = resolvedCampaign.map(stage => {
         const stageNarrative = stage.events.map(event => event.narrative).join(' ');
         return `Level ${stage.level}:\n${stageNarrative}\n`;
     }).join('\n');
+
+    narrative += '\nCharacter Progressions:\n';
+    characters.forEach(character => {
+        narrative += `\n${character.name}:\n`;
+        character.progression.forEach(levelData => {
+            narrative += `Level ${levelData.level}: `;
+            narrative += `Stats: ${JSON.stringify(levelData.stats)}, `;
+            narrative += `Hit Points: ${levelData.hitPoints}, `;
+            if (levelData.subclass) {
+                narrative += `Subclass: ${levelData.subclass}, `;
+            }
+            if (levelData.asiOrFeats.length > 0) {
+                narrative += `ASI/Feats: ${levelData.asiOrFeats.join(', ')}, `;
+            }
+            narrative += `Cantrips: ${levelData.cantrips.join(', ')}, `;
+            narrative += `Spells: ${JSON.stringify(levelData.spells)}\n`;
+        });
+    });
+
+    return narrative;
 }
