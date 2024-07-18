@@ -148,6 +148,7 @@ function generateCharacter(level) {
     const raceName = selectRandomRace();
     const race = races[raceName];
     const { subraceName, bonuses } = generateRace(race);
+    console.log(raceName);
     stats = applyRaceBonuses(stats, bonuses);
 
     const bonusApplied = {};
@@ -169,8 +170,9 @@ function generateCharacter(level) {
     }
     const classData = classes[primaryClass];
 
+    // Step 5: Determine if multiclassing and allocate levels
     const [primaryLevel, secondaryLevel] = allocateLevels(level);
-
+    // Step 6: Select secondary class if multiclassing
     let secondaryClass = null;
     let secondaryClassData = null;
     let secondarySubclass = null;
@@ -184,10 +186,14 @@ function generateCharacter(level) {
             return null;
         }
     }
-
+    console.log(primaryClass + primaryLevel);
+    console.log(secondaryClass + secondaryLevel);
+    // Step 7: Apply subclass if applicable
+    const subclass = (primaryLevel >= 3) ? determineSubclass(primaryClass) : null;
+    
     const gender = getRandomGender();
     const sexuality = getRandomSexuality();
-
+    // Step 8: Generate other character details
     const nameSource = raceBaseNames[raceName][gender] || raceBaseNames[raceName].neutral;
     const firstNameSyllables = extractSyllables(nameSource.firstNames);
     const firstName = generateName(firstNameSyllables, race.firstNameMinSyllables, race.firstNameMaxSyllables);
@@ -208,6 +214,7 @@ function generateCharacter(level) {
     const equipment = selectEquipment(classData);
     const hitPoints = calculateHitPoints(classData.hitDie, primaryLevel, stats.Constitution);
 
+    // Generate languages
     let languages = ['Common'];
     const racialLanguages = getRacialLanguages(raceName);
     if (racialLanguages.length > 0) {
@@ -220,6 +227,7 @@ function generateCharacter(level) {
     const additionalLanguages = selectUniqueItems(languagesList, background.languagesCount || 0, languages);
     languages = languages.concat(additionalLanguages);
 
+    // Handle secondary class details if multiclassing
     let secondaryClassDetails = null;
     if (secondaryClass && secondaryClassData) {
         const secondaryCantrips = spellLists[secondaryClass] && spellLists[secondaryClass].cantrips ? selectRandomSpells(spellLists[secondaryClass].cantrips, secondaryClassData.cantripsByLevel[secondaryLevel - 1]) : [];
@@ -254,37 +262,28 @@ function generateCharacter(level) {
         cantrips,
         equipment,
         features: generateCharacterFeatures(classData, primaryLevel),
-        bonusApplied,
-        feats: [],
-        languages,
-        tools: []
+        bonusApplied, // Include bonusApplied in the returned character object
+        feats: [], // Initialize feats as an empty array
+        languages, // Include generated languages
+        tools: [] // Initialize tools as an empty array
     };
 }
 
 function generateDescription(raceName) {
     const appearances = selectMultipleRandomItems(raceDescriptors[raceName] || ['of unknown appearance'], 3);
-    const socialTrait = selectRandomItem(globalDescriptors.personality.social);
-    const temperamentalTrait = selectRandomItem(globalDescriptors.personality.temperamental);
-    const dispositionTrait = selectRandomItem(globalDescriptors.personality.disposition);
+    const personalities = selectMultipleRandomItems(globalDescriptors.personality, 2);
     const flaw = selectRandomItem(globalDescriptors.flaw);
     const otherTrait = selectRandomItem(globalDescriptors.otherTraits);
 
-    return `${appearances.join(', ')}, and ${appearances[2]}. They are ${socialTrait}, ${temperamentalTrait}, and ${dispositionTrait}, ${flaw}, and ${otherTrait}.`;}
+    return `${appearances.join(', ')}, and ${appearances[2]}. They are ${personalities.join(', ')}, ${flaw}, and ${otherTrait}.`;
+}
 
 function selectMultipleRandomItems(items, count) {
-    if (!Array.isArray(items)) {
-        console.error('selectMultipleRandomItems expects an array as the first argument');
-        return [];
-    }
     const shuffled = items.slice().sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
 }
 
 function selectRandomItem(items) {
-    if (!Array.isArray(items)) {
-        console.error('selectRandomItem expects an array as the first argument');
-        return null;
-    }
     return items[Math.floor(Math.random() * items.length)];
 }
 function getRacialLanguages(raceName) {
