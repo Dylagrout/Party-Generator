@@ -5,15 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('character-modal').style.display = 'none';
         });
     }
-    const generatePartyButton = document.getElementById('generate-party-button');
-    const toCampaignGeneratorButton = document.getElementById('to-campaign-generator-button');
-    const generateCampaignButton = document.getElementById('generate-campaign-button');
-    const toNarrativeScreenButton = document.getElementById('to-narrative-screen-button');
-
-    generatePartyButton.addEventListener('click', generateParty);
-    toCampaignGeneratorButton.addEventListener('click', showCampaignGeneratorScreen);
-    generateCampaignButton.addEventListener('click', generateCampaign);
-    toNarrativeScreenButton.addEventListener('click', showNarrativeScreen);
 });
 
 function renderCharacter(character) {
