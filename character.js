@@ -213,10 +213,11 @@ function generateCharacter(level) {
     const archetype = selectRandomItem(archetypes);
     const characterTags = selectMultipleRandomItems(tags, 2);
 
-    const initialCantrips = spellLists[primaryClass] && spellLists[primaryClass].cantrips ? selectRandomSpells(spellLists[primaryClass].cantrips, classData.cantripsByLevel[primaryLevel - 1]) : [];
-    const initialSpells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[primaryLevel - 1], primaryClass === 'Warlock', primaryLevel) : {};
+    const currentSpells = {}; // Initialize current spells
+    const cantrips = spellLists[primaryClass] && spellLists[primaryClass].cantrips ? selectRandomSpells(spellLists[primaryClass].cantrips, classData.cantripsByLevel[primaryLevel - 1]) : [];
+    const spells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[primaryLevel - 1], primaryClass === 'Warlock', primaryLevel, currentSpells) : {};
     const equipment = selectEquipment(classData);
-    const initialHitPoints = calculateHitPoints(classData.hitDie, primaryLevel, stats.Constitution);
+    const hitPoints = calculateHitPoints(classData.hitDie, primaryLevel, stats.Constitution);
 
 
     // Generate languages
@@ -260,11 +261,11 @@ function generateCharacter(level) {
         secondaryLevel,
         secondaryClassDetails,
         stats,
-        hitPoints: initialHitPoints,
+        hitPoints,
         skills,
         background: backgroundKey,
-        spells: initialSpells,
-        cantrips: initialCantrips,
+        spells,
+        cantrips,
         equipment,
         features: generateCharacterFeatures(classData, primaryLevel),
         bonusApplied, // Include bonusApplied in the returned character object
@@ -583,7 +584,19 @@ function generateSpellsForLevel(spellList, spellSlots, isWarlock, level, current
     const spells = {};
     for (let i = 0; i < spellSlots.length; i++) {
         const spellLevel = i + 1;
-        const availableSpells = spellList.spells[spellLevel].filter(spell => !(currentSpells[spellLevel] && currentSpells[spellLevel].includes(spell)));
+
+        // Ensure the spell level exists in the spell list
+        if (!spellList.spells[spellLevel]) {
+            continue;
+        }
+
+        const availableSpells = spellList.spells[spellLevel].filter(spell => {
+            if (!currentSpells[spellLevel]) {
+                return true;
+            }
+            return !currentSpells[spellLevel].includes(spell);
+        });
+
         spells[spellLevel] = selectUniqueItems(availableSpells, spellSlots[i]);
     }
     return spells;
