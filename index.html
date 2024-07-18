@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
+    <div id="party-generator-screen">
         <h1>D&D Party Generator</h1>
         <div>
             <label for="party-size">Select party size (1-6):</label>
@@ -16,6 +17,8 @@
             <button id="generate-party-button">Generate Party</button>
         </div>
         <div id="party-members" class="party-grid"></div>
+        <button id="to-campaign-generator-button" style="display: none;">Next: Campaign Generator</button>
+    </div>
     <!-- Modal structure -->
     <div id="character-modal" class="modal">
         <div class="modal-content">
@@ -23,10 +26,26 @@
             <div id="character-details"></div>
         </div>
     </div>
+    <div id="campaign-generator-screen" style="display: none;">
+        <h1>Campaign Generator</h1>
+        <label for="campaign-end-level">End Level:</label>
+        <input type="number" id="campaign-end-level" min="1" max="20" value="3">
+        <button id="generate-campaign-button">Generate Campaign</button>
+        <div id="campaign-details"></div>
+        <button id="to-narrative-screen-button" style="display: none;">Next: Narrative</button>
+    </div>
+
+    <div id="narrative-screen" style="display: none;">
+        <h1>Narrative</h1>
+        <div id="narrative-log"></div>
+    </div>
+
     <script src="data.js"></script>
     <script src="utils.js"></script>
     <script src="character.js"></script>
     <script src="characterDescriptor.js"></script>
+    <script src="campaign.js"></script>
+    <script src="narrative.js"></script>
     <script src="ui.js"></script>
     <script src="main.js"></script>
     <script src="nameGenerator.js"></script>
