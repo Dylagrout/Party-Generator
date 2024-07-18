@@ -14,13 +14,14 @@ function resolveEvents(campaign, characters) {
 function resolveEvent(event, characters) {
     const success = characters.some(character => {
         const relevantStat = getRelevantStatForEvent(event);
-        return character.stats[relevantStat] >= 15;
+        return character.stats[relevantStat] >= 15 || character.archetype === 'brave' || character.tags.includes('strong');
     });
 
+    const narratives = generateNarrative(event, characters, success);
     return {
         ...event,
         outcome: success ? 'success' : 'failure',
-        narrative: generateNarrative(event, success)
+        narrative: narratives
     };
 }
 
@@ -34,12 +35,41 @@ function getRelevantStatForEvent(event) {
     }
 }
 
-function generateNarrative(event, success) {
+function generateNarrative(event, characters, success) {
     const outcome = success ? 'success' : 'failure';
     const outcomeText = selectRandomItem(outcomes[outcome]);
-    return `${event.name}: ${outcomeText}`;
+    
+    const characterReactions = characters.map(character => {
+        const archetypeReaction = getArchetypeReaction(character.archetype, event, success);
+        const tagReactions = character.tags.map(tag => getTagReaction(tag, event, success)).join(' ');
+        return `${character.name}: ${archetypeReaction} ${tagReactions}`;
+    }).join(' ');
+
+    return `${event.name}: ${outcomeText} ${characterReactions}`;
+}
+function getArchetypeReaction(archetype, event, success) {
+    const reactions = {
+        aggressive: success ? 'charges forward fearlessly.' : 'lashes out in frustration.',
+        cautious: success ? 'carefully plans the next move.' : 'retreats to reconsider options.',
+        friendly: success ? 'encourages the team.' : 'tries to console others.',
+        curious: success ? 'examines everything with interest.' : 'is disappointed but still curious.',
+        brave: success ? 'stands tall and confident.' : 'remains undeterred.',
+        strategist: success ? 'analyzes the victory.' : 'rethinks the strategy.'
+    };
+    return reactions[archetype];
 }
 
+function getTagReaction(tag, event, success) {
+    const reactions = {
+        short: success ? 'uses their size to an advantage.' : 'struggles with their height.',
+        tall: success ? 'reaches places others can’t.' : 'has trouble with tight spaces.',
+        strong: success ? 'overpowers the obstacles.' : 'is exhausted but persistent.',
+        weak: success ? 'finds clever ways around physical challenges.' : 'is physically overmatched.',
+        quick: success ? 'dodges swiftly.' : 'is a bit too hasty.',
+        slow: success ? 'moves methodically.' : 'lags behind.'
+    };
+    return reactions[tag];
+}
 const outcomes = {
     success: ['The heroes emerged victorious.', 'The party solved the puzzle.', 'The characters navigated the social intricacies skillfully.'],
     failure: ['The heroes were defeated.', 'The party failed to solve the puzzle.', 'The characters made a social blunder.']

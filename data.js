@@ -968,4 +968,23 @@ const races = {
         bonus: {'Charisma': 2, 'Intelligence':1}
     }
 };
+const archetypes = [
+    'aggressive',
+    'cautious',
+    'friendly',
+    'curious',
+    'brave',
+    'strategist'
+];
+
+const tags = [
+    'short',
+    'tall',
+    'strong',
+    'weak',
+    'quick',
+    'slow'
+];
+
+// Other existing data...
 

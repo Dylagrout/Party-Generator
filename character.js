@@ -170,6 +170,7 @@ function generateCharacter(level) {
     }
     const classData = classes[primaryClass];
 
+
     // Step 5: Determine if multiclassing and allocate levels
     const [primaryLevel, secondaryLevel] = allocateLevels(level);
     // Step 6: Select secondary class if multiclassing
@@ -208,6 +209,9 @@ function generateCharacter(level) {
 
     const fullName = lastName ? `${firstName} ${lastName}` : firstName;
     const description = generateDescription(raceName);
+
+    const archetype = selectRandomItem(archetypes);
+    const characterTags = selectMultipleRandomItems(tags, 2);
 
     const cantrips = spellLists[primaryClass] && spellLists[primaryClass].cantrips ? selectRandomSpells(spellLists[primaryClass].cantrips, classData.cantripsByLevel[primaryLevel - 1]) : [];
     const spells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[primaryLevel - 1], primaryClass === 'Warlock', primaryLevel) : {};
@@ -265,7 +269,9 @@ function generateCharacter(level) {
         bonusApplied, // Include bonusApplied in the returned character object
         feats: [], // Initialize feats as an empty array
         languages, // Include generated languages
-        tools: [] // Initialize tools as an empty array
+        tools: [], // Initialize tools as an empty array
+        archetype,
+        tags: characterTags
     };
 }
 
