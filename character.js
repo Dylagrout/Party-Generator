@@ -170,45 +170,111 @@ function generateCharacter(level) {
     }
 
     const classData = classes[primaryClass];
+
+    // Step 5: Determine if multiclassing and allocate levels
+    const [primaryLevel, secondaryLevel] = allocateLevels(level);
+    // Step 6: Select secondary class if multiclassing
+    let secondaryClass = null;
+    let secondaryClassData = null;
+    let secondarySubclass = null;
+    if (secondaryLevel > 0) {
+        secondaryClass = selectAdditionalClasses(primaryClass, stats);
+        if (secondaryClass && classes[secondaryClass]) {
+            secondaryClassData = classes[secondaryClass];
+            secondarySubclass = (secondaryLevel >= 3) ? determineSubclass(secondaryClass) : null;
+        } else {
+            console.error('Secondary class not defined:', secondaryClass);
+            return null;
+        }
+    }
+    console.log(primaryClass + primaryLevel);
+    console.log(secondaryClass + secondaryLevel);
+    // Step 7: Apply subclass if applicable
+    const subclass = (primaryLevel >= 3) ? determineSubclass(primaryClass) : null;
+    
+    const gender = getRandomGender();
+    const sexuality = getRandomSexuality();
+    // Step 8: Generate other character details
+    const nameSource = raceBaseNames[raceName][gender] || raceBaseNames[raceName].neutral;
+    const firstNameSyllables = extractSyllables(nameSource.firstNames);
+    const firstName = generateName(firstNameSyllables, race.firstNameMinSyllables, race.firstNameMaxSyllables);
+
+    let lastName = '';
+    if (nameSource.lastNames) {
+        const lastNameSyllables = extractSyllables(nameSource.lastNames);
+        lastName = generateName(lastNameSyllables, race.lastNameMinSyllables, race.lastNameMaxSyllables);
+    } else if (nameSource.compoundParts) {
+        lastName = generateCompoundName(nameSource.compoundParts);
+    }
+
+    const fullName = lastName ? `${firstName} ${lastName}` : firstName;
+    const description = generateDescription(raceName);
+
     const archetype = selectRandomItem(archetypes);
     const characterTags = selectMultipleRandomItems(tags, 2);
 
-    // Generate level by level progression
-    const progression = generateLevelProgression(level, primaryClass, classData, stats);
+    const initialCantrips = spellLists[primaryClass] && spellLists[primaryClass].cantrips ? selectRandomSpells(spellLists[primaryClass].cantrips, classData.cantripsByLevel[primaryLevel - 1]) : [];
+    const initialSpells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[primaryLevel - 1], primaryClass === 'Warlock', primaryLevel) : {};
+    const equipment = selectEquipment(classData);
+    const initialHitPoints = calculateHitPoints(classData.hitDie, primaryLevel, stats.Constitution);
 
-    // Generate initial character details
-    const character = {
-        name: generateName(raceName),
-        gender: getRandomGender(),
-        sexuality: getRandomSexuality(),
+
+    // Generate languages
+    let languages = ['Common'];
+    const racialLanguages = getRacialLanguages(raceName);
+    if (racialLanguages.length > 0) {
+        languages = languages.concat(racialLanguages);
+    }
+    if (raceName === 'Aarakocra') {
+        const additionalLanguage = selectUniqueItems(languagesList, 1, languages);
+        languages = languages.concat(additionalLanguage);
+    }
+    const additionalLanguages = selectUniqueItems(languagesList, background.languagesCount || 0, languages);
+    languages = languages.concat(additionalLanguages);
+
+    // Handle secondary class details if multiclassing
+    let secondaryClassDetails = null;
+    if (secondaryClass && secondaryClassData) {
+        const secondaryCantrips = spellLists[secondaryClass] && spellLists[secondaryClass].cantrips ? selectRandomSpells(spellLists[secondaryClass].cantrips, secondaryClassData.cantripsByLevel[secondaryLevel - 1]) : [];
+        const secondarySpells = spellLists[secondaryClass] && spellLists[secondaryClass].spells ? generateSpellsForLevel(spellLists[secondaryClass], secondaryClassData.spellSlotsByLevel[secondaryLevel - 1], secondaryClass === 'Warlock', secondaryLevel) : {};
+        secondaryClassDetails = {
+            class: secondaryClass,
+            level: secondaryLevel,
+            subclass: secondarySubclass,
+            cantrips: secondaryCantrips,
+            spells: secondarySpells
+        };
+    }
+    const progression = generateLevelProgression(level, primaryClass, classData, stats);
+    return {
+        name: fullName,
+        gender,
+        sexuality,
         race: raceName,
         subrace: subraceName,
         class: primaryClass,
-        subclass: (level >= 3) ? determineSubclass(primaryClass) : null,
-        description: generateDescription(raceName),
-        level,
+        subclass,
+        description,
+        level: primaryLevel + secondaryLevel,
+        primaryLevel,
+        secondaryLevel,
+        secondaryClassDetails,
         stats,
-        hitPoints: calculateHitPoints(classData.hitDie, level, stats.Constitution),
+        hitPoints: initialHitPoints,
         skills,
         background: backgroundKey,
-        spells: [],
-        cantrips: [],
-        equipment: selectEquipment(classData),
-        features: generateCharacterFeatures(classData, level),
-        bonusApplied,
-        feats: [],
-        languages: [],
-        tools: [],
+        spells: initialSpells,
+        cantrips: initialCantrips,
+        equipment,
+        features: generateCharacterFeatures(classData, primaryLevel),
+        bonusApplied, // Include bonusApplied in the returned character object
+        feats: [], // Initialize feats as an empty array
+        languages, // Include generated languages
+        tools: [], // Initialize tools as an empty array
         archetype,
         tags: characterTags,
-        progression
+        progression // Include progression i
     };
-
-    // Set the initial spells and cantrips
-    character.cantrips = spellLists[primaryClass] && spellLists[primaryClass].cantrips ? selectRandomSpells(spellLists[primaryClass].cantrips, classData.cantripsByLevel[level - 1]) : [];
-    character.spells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[level - 1], primaryClass === 'Warlock', level) : {};
-
-    return character;
 }
 function generateLevelProgression(maxLevel, primaryClass, classData, stats) {
     const progression = [];
@@ -250,18 +316,6 @@ function generateLevelProgression(maxLevel, primaryClass, classData, stats) {
     }
 
     return progression;
-}
-function generateFeats(charClass, level) {
-    if (!classes[charClass]) {
-        console.error('Class not defined for feats:', charClass);
-        return [];
-    }
-    const feats = [];
-    const levels = Math.floor(level / classes[charClass].featsEvery);
-    for (let i = 0; i < levels; i++) {
-        feats.push("Feat " + (i + 1));  // Placeholder for actual feat generation logic
-    }
-    return feats;
 }
 function generateDescription(raceName) {
     const appearances = selectMultipleRandomItems(raceDescriptors[raceName] || ['of unknown appearance'], 3);
