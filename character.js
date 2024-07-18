@@ -516,32 +516,6 @@ function selectRandomSpells(spells, count) {
     return shuffled.slice(0, count);
 }
 
-function generateSpellsForLevel(spellList, slots, isWarlock = false, warlockLevel = 1) {
-    let spells = {};
-
-    if (isWarlock) {
-        // Warlocks use Pact Magic, slots are always of the highest level they can cast
-        const warlockSlotLevel = classes['Warlock'].pactSlotLevels[warlockLevel - 1];
-        const numSlots = slots[0] || 0; // Use 0 if slots[0] is undefined
-
-        if (Array.isArray(spellList.spells[warlockSlotLevel])) {
-            spells[warlockSlotLevel] = selectRandomSpells(spellList.spells[warlockSlotLevel], numSlots);
-        } else {
-            console.warn(`No spells found for Warlock level ${warlockSlotLevel} or invalid slot number.`);
-        }
-    } else {
-        slots.forEach((num, index) => {
-            const spellLevel = index + 1;
-            if (num > 0 && Array.isArray(spellList.spells[spellLevel])) {
-                spells[spellLevel] = selectRandomSpells(spellList.spells[spellLevel], num);
-            } else {
-                console.warn(`No spells found for level ${spellLevel} or invalid slot number:`, spellList.spells[spellLevel]);
-            }
-        });
-    }
-
-    return spells;
-}
 function selectRandomFeats(currentFeats) {
     const availableFeats = feats.filter(feat => !currentFeats.includes(feat.name));
     const selectedFeats = selectRandomItems(availableFeats, 1).map(feat => feat.name);
@@ -580,25 +554,31 @@ function selectEquipment(classData) {
         weapons: selectRandomItems(weaponChoices, 2), // Select two weapons if typical
     };
 }
-function generateSpellsForLevel(spellList, spellSlots, isWarlock, level, currentSpells) {
-    const spells = {};
-    for (let i = 0; i < spellSlots.length; i++) {
-        const spellLevel = i + 1;
 
-        // Ensure the spell level exists in the spell list
-        if (!spellList.spells[spellLevel]) {
-            continue;
+function generateSpellsForLevel(spellList, slots, isWarlock = false, warlockLevel = 1) {
+    let spells = {};
+
+    if (isWarlock) {
+        // Warlocks use Pact Magic, slots are always of the highest level they can cast
+        const warlockSlotLevel = classes['Warlock'].pactSlotLevels[warlockLevel - 1];
+        const numSlots = slots[0] || 0; // Use 0 if slots[0] is undefined
+
+        if (Array.isArray(spellList.spells[warlockSlotLevel])) {
+            spells[warlockSlotLevel] = selectRandomSpells(spellList.spells[warlockSlotLevel], numSlots);
+        } else {
+            console.warn(`No spells found for Warlock level ${warlockSlotLevel} or invalid slot number.`);
         }
-
-        const availableSpells = spellList.spells[spellLevel].filter(spell => {
-            if (!currentSpells[spellLevel]) {
-                return true;
+    } else {
+        slots.forEach((num, index) => {
+            const spellLevel = index + 1;
+            if (num > 0 && Array.isArray(spellList.spells[spellLevel])) {
+                spells[spellLevel] = selectRandomSpells(spellList.spells[spellLevel], num);
+            } else {
+                console.warn(`No spells found for level ${spellLevel} or invalid slot number:`, spellList.spells[spellLevel]);
             }
-            return !currentSpells[spellLevel].includes(spell);
         });
-
-        spells[spellLevel] = selectUniqueItems(availableSpells, spellSlots[i]);
     }
+
     return spells;
 }
 
