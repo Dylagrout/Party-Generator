@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function renderCharacter(character) {
     let html = `<h3>${character.name} - ${character.gender} ${character.race}${character.subrace ? ' (' + character.subrace + ')' : ''} - ${character.subclass ? character.subclass + ' ' : ''}${character.class} ${character.primaryLevel}`;
     if (character.secondaryClassDetails) {
+        console.log("Here");
         html += ` / ${character.secondaryClassDetails.subclass ? character.secondaryClassDetails.subclass + ' ' : ''}${character.secondaryClassDetails.class} ${character.secondaryClassDetails.level}`;
     }
     html += `</h3>
