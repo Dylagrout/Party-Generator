@@ -60,7 +60,7 @@ function generateCharacter(level) {
     console.log(secondaryClass + secondaryLevel);
     // Step 7: Apply subclass if applicable
     const subclass = (primaryLevel >= 3) ? determineSubclass(primaryClass) : null;
-    
+
     const gender = getRandomGender();
     const sexuality = getRandomSexuality();
     // Step 8: Generate other character details
