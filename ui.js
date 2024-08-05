@@ -21,6 +21,8 @@ function renderCharacter(character) {
         html += `<li>${ability}: ${character.stats[ability]}${character.bonusApplied && character.bonusApplied.hasOwnProperty(ability) ? ' (+)' : ''}</li>`;
     });
     html += `<li>Background: ${character.background}</li>
+             <li>Archetype: ${character.archetype}</li>
+             <li>Tags: ${character.tags.join(', ')}</li>
              <li><button onclick="showCharacterDetails(${JSON.stringify(character).replace(/"/g, "&quot;")})">View More</button></li>
              </ul>`;
     return html;

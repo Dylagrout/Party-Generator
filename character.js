@@ -82,8 +82,9 @@ function generateCharacter(level) {
     const archetype = selectRandomItem(archetypes);
     const characterTags = selectMultipleRandomItems(tags, 2);
 
+    const currentSpells = {};
     const cantrips = spellLists[primaryClass] && spellLists[primaryClass].cantrips ? selectRandomSpells(spellLists[primaryClass].cantrips, classData.cantripsByLevel[primaryLevel - 1]) : [];
-    const spells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[primaryLevel - 1], primaryClass === 'Warlock', primaryLevel) : {};
+    const spells = spellLists[primaryClass] && spellLists[primaryClass].spells ? generateSpellsForLevel(spellLists[primaryClass], classData.spellSlotsByLevel[primaryLevel - 1], primaryClass === 'Warlock', primaryLevel, currentSpells) : {};
     const equipment = selectEquipment(classData);
     const hitPoints = calculateHitPoints(classData.hitDie, primaryLevel, stats.Constitution);
 
@@ -113,7 +114,7 @@ function generateCharacter(level) {
             spells: secondarySpells
         };
     }
-
+const progression = generateLevelProgression(level, primaryClass, classData, stats);
     return {
         name: fullName,
         gender,
@@ -140,7 +141,8 @@ function generateCharacter(level) {
         languages, // Include generated languages
         tools: [], // Initialize tools as an empty array
         archetype,
-        tags: characterTags
+        tags: characterTags,
+        progression
     };
 }
 function rollStats() {

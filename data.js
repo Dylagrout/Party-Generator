@@ -975,12 +975,20 @@ const races = {
     }
 };
 const archetypes = [
-    'aggressive',
-    'cautious',
-    'friendly',
-    'curious',
-    'brave',
-    'strategist'
+    'hero',
+    'innocent',
+    'caregiver',
+    'everyman',
+    'explorer',
+    'rebel',
+    'lover',
+    'artist',
+    'jester',
+    'scholar',
+    'magician',
+    'ruler',
+    'strategist',
+    'zealot'
 ];
 
 const tags = [
@@ -992,5 +1000,13 @@ const tags = [
     'slow'
 ];
 
+const tagContradictions = {
+    'short': ['tall'],
+    'tall': ['short'],
+    'strong': ['weak'],
+    'weak': ['strong'],
+    'quick': ['slow'],
+    'slow': ['quick']
+};
 // Other existing data...
 

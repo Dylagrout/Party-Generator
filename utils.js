@@ -2,9 +2,24 @@ function selectRandomSkills(skills, count) {
     const shuffled = skills.sort(() => 0.5 - Math.random());
     return shuffled.slice(0, count);
 }
-function selectMultipleRandomItems(items, count) {
-    const shuffled = items.slice().sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, count);
+function selectMultipleRandomItems(array, count, exclusions = []) {
+    const filteredArray = array.filter(item => !exclusions.includes(item));
+    const selectedItems = [];
+    while (selectedItems.length < count && filteredArray.length > 0) {
+        const item = selectRandomItem(filteredArray);
+        selectedItems.push(item);
+        // Remove item and its contradictions from the array
+        const contradictions = tagContradictions[item] || [];
+        exclusions.push(item, ...contradictions);
+        filteredArray.splice(filteredArray.indexOf(item), 1);
+        contradictions.forEach(contradiction => {
+            const index = filteredArray.indexOf(contradiction);
+            if (index > -1) {
+                filteredArray.splice(index, 1);
+            }
+        });
+    }
+    return selectedItems;
 }
 
 function selectRandomItem(items) {
