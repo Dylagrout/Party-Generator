@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function renderCharacter(character) {
-    let html = `<h3>${character.name} - ${character.gender} ${character.race}${character.subrace ? ' (' + character.subrace + ')' : ''} - ${character.subclass ? character.subclass + ' ' : ''}${character.class} ${character.level}</h3>
+    let html = `<h3>${character.name} - ${character.gender} ${character.race}${character.subrace ? ' (' + character.subrace + ')' : ''} - ${character.subclass ? character.subclass + ' ' : ''}${character.class} ${character.primaryLevel}`;
+    if (character.secondaryClassDetails) {
+        html += ` / ${character.secondaryClassDetails.subclass ? character.secondaryClassDetails.subclass + ' ' : ''}${character.secondaryClassDetails.class} ${character.secondaryClassDetails.level}`;
+    }
+    html += `</h3>
                 <p>${character.description}</p>
                 <ul>`;
     const abilities = ['Strength', 'Dexterity', 'Constitution', 'Intelligence', 'Wisdom', 'Charisma'];
@@ -22,6 +26,7 @@ function renderCharacter(character) {
              </ul>`;
     return html;
 }
+
 
 function showCharacterDetails(character) {
     const modal = document.getElementById('character-modal');
@@ -58,6 +63,20 @@ function showCharacterDetails(character) {
     });
     progressionHtml += '</ul>';
 
+    let secondaryClassDetailsHtml = '';
+    if (character.secondaryClassDetails) {
+        const secondarySpellDescriptions = [];
+        for (const level in character.secondaryClassDetails.spells) {
+            secondarySpellDescriptions.push(`Level ${level}: ` + character.secondaryClassDetails.spells[level].join(', '));
+        }
+        secondaryClassDetailsHtml = `
+            <h3>${character.secondaryClassDetails.subclass ? character.secondaryClassDetails.subclass + ' ' : ''}${character.secondaryClassDetails.class} ${character.secondaryClassDetails.level}</h3>
+            <ul>
+                <li>Secondary Cantrips: ${character.secondaryClassDetails.cantrips.join(', ')}</li>
+                <li>Secondary Spells: ${secondarySpellDescriptions.join('; ')}</li>
+            </ul>`;
+    }
+
     detailsDiv.innerHTML = `
     <h2>${character.name} - ${character.race} ${character.subrace ? '(' + character.subrace + ') ' : ''}</h2>
     <p>${character.description}</p>
@@ -76,7 +95,8 @@ function showCharacterDetails(character) {
     <li>Tools: ${tools.join(', ')}</li>
     <li>Skills: ${character.skills.join(', ')}</li>   
     </ul>
-    <h3>${character.subclass ? character.subclass + ' ' : ''}${character.class} ${character.level}</h3>
+    <h3>${character.subclass ? character.subclass + ' ' : ''}${character.class} ${character.primaryLevel}</h3>
+    ${secondaryClassDetailsHtml}
     <ul>
         <li>Spells: ${spellDescriptions.join('; ')}</li> 
     </ul>
@@ -84,3 +104,4 @@ function showCharacterDetails(character) {
 
     modal.style.display = 'block';
 }
+
