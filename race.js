@@ -121,7 +121,7 @@ function modifierFromStat(stat) {
     return Math.floor((stat - 10) / 2);
 }
 function getRandomGender() {
-    const genders = ['male', 'female', 'non-binary'];
+    const genders = ['male', 'female'];
     return genders[Math.floor(Math.random() * genders.length)];
 }
 

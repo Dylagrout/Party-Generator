@@ -236,7 +236,7 @@ const raceBaseNames = {
     },
     'Halfling': {
         male: {
-            firstNames: ['Elrond', 'legolas', 'thranduil', 'celeborn', 'haldir'],
+            firstNames: ['adalgrim', 'adelard', 'alton', 'andwise', 'anson', 'balbo', 'bandobras', 'beau', 'bill', 'bingo', 'bodo', 'bolder', 'bungo', 'cade', 'calkin', 'cotman', 'drogo', 'dudo', 'eldon', 'falco', 'fastolph', 'filibert', 'flambard', 'fosco', 'garret', 'genrill', 'griffo', 'halfred', 'hildigrim', 'hob', 'holman', 'kepli', 'largo', 'longo', 'lotho', 'lyle', 'milo', 'minto', 'morro', 'mosco', 'mungo', 'odo', 'olo', 'osborn', 'ponto', 'porto', 'posco', 'ronald', 'rorimac', 'roscoe', 'rufus', 'sam', 'sancho', 'saradac', 'seredoc', 'theadric', 'tolman', 'wellby', 'wilcome'],
             lastNames: ['leafwalker', 'greenleaf', 'lightbringer', 'silvershadow', 'starfire']
         },
         female: {
